@@ -11,7 +11,12 @@ public class Player extends GameObject{
     }
     public void move(double deltaTime) {
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            X= getX() - (speed*deltaTime);
+            setX(getX() - (speed*deltaTime)) ;
         
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+            setX(getX() + (speed*deltaTime)) ;
+        
+        }
     }
 }
