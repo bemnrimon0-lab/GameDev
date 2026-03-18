@@ -14,11 +14,16 @@ public class MyGame extends ApplicationAdapter {
         activeObjects = new ArrayList<GameObject>();
 
         // TODO 3: Instantiate your Player subclass and add it to activeObjects.
-
-
+        Player p = new Player(50,100);
+        activeObjects.add(p);
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
-        
+        int x = 100;
+        for(int i = 0 ; i < 5 ; i ++){
+            
+            enemy bad = new enemy(400,x);
+            x += 60;
+        }
     }
 
     //render() is the game loop, called approx 60 times per second
@@ -36,12 +41,16 @@ public class MyGame extends ApplicationAdapter {
         // --- AP REVIEW: POLYMORPHISM ---
         // TODO 5: Write a standard or enhanced for-loop to iterate through activeObjects.
         // For each object, call its move() method.
-
+        for(int i = 0 ; i < activeObjects.size() ; i++){
+            activeObjects.get(i).move(1.0);
+        }
         
         //Note: Anything drawn must be between .begin() and .end()
         batch.begin();
         // TODO 6: Write a loop to iterate through activeObjects and call draw(batch).
-
+        for(int i = 0 ; i < activeObjects.size() ; i++){
+            activeObjects.get(i).move(1.0);
+        }
 
         batch.end();
 
@@ -51,7 +60,11 @@ public class MyGame extends ApplicationAdapter {
         // See the cheat sheet for the overlap method!
         // NOTE: If you are removing items from an ArrayList, how must you structure 
         // your for-loop to avoid skipping elements?
-
+        for(int i = 0 ; i < activeObjects.size() ; i++){
+            if(activeObjects.get(i) instanceof enemy && p.getrectangle().overlaps(bad.getrectangle)){
+                activeObjects.remove(i);
+            }
+        }
     }
     
     @Override
