@@ -18,5 +18,13 @@ public class Player extends GameObject{
             setX(getX() + (speed*deltaTime)) ;
         
         }
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+            setY(getY() - (speed*deltaTime)) ;
+        
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            setY(getY() + (speed*deltaTime)) ;
+        
+        }
     }
 }

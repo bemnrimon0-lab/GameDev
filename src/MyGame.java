@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class MyGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private ArrayList<GameObject> activeObjects;
-
+    int x = 100;
+    enemy bad = new enemy(400,x);
     @Override
     public void create() {
         batch = new SpriteBatch();
@@ -18,10 +19,10 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(p);
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
-        int x = 100;
+
         for(int i = 0 ; i < 5 ; i ++){
-            
             enemy bad = new enemy(400,x);
+            
             x += 60;
         }
     }
@@ -60,8 +61,9 @@ public class MyGame extends ApplicationAdapter {
         // See the cheat sheet for the overlap method!
         // NOTE: If you are removing items from an ArrayList, how must you structure 
         // your for-loop to avoid skipping elements?
+        Player p = new Player(50,100);
         for(int i = 0 ; i < activeObjects.size() ; i++){
-            if(activeObjects.get(i) instanceof enemy && p.getrectangle().overlaps(bad.getrectangle)){
+            if(activeObjects.get(i) instanceof enemy && p.getHitbox().overlaps(bad.getHitbox())){
                 activeObjects.remove(i);
             }
         }
