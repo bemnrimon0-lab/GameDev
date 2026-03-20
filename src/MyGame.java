@@ -21,7 +21,6 @@ public class MyGame extends ApplicationAdapter {
         //         starting Y-coordinates and add them to activeObjects.
 
         for(int i = 0 ; i < 5 ; i ++){
-            enemy bad = new enemy(400,x);
             
             x += 60;
         }
