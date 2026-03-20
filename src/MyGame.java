@@ -8,10 +8,13 @@ public class MyGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private ArrayList<GameObject> activeObjects;
     int x = 100;
-    enemy bad = new enemy(400,x);
+    // enemy bad;
+
+
     @Override
     public void create() {
         batch = new SpriteBatch();
+        
         activeObjects = new ArrayList<GameObject>();
 
         // TODO 3: Instantiate your Player subclass and add it to activeObjects.
@@ -21,9 +24,10 @@ public class MyGame extends ApplicationAdapter {
         //         starting Y-coordinates and add them to activeObjects.
 
         for(int i = 0 ; i < 5 ; i ++){
-            
+            enemy bad = new enemy(400,x);
             x += 60;
-        }
+            activeObjects.add(bad); 
+               }
     }
 
     //render() is the game loop, called approx 60 times per second
@@ -49,7 +53,7 @@ public class MyGame extends ApplicationAdapter {
         batch.begin();
         // TODO 6: Write a loop to iterate through activeObjects and call draw(batch).
         for(int i = 0 ; i < activeObjects.size() ; i++){
-            activeObjects.get(i).move(1.0);
+            activeObjects.get(i).draw(batch);
         }
 
         batch.end();
@@ -61,9 +65,14 @@ public class MyGame extends ApplicationAdapter {
         // NOTE: If you are removing items from an ArrayList, how must you structure 
         // your for-loop to avoid skipping elements?
         Player p = new Player(50,100);
+      
         for(int i = 0 ; i < activeObjects.size() ; i++){
-            if(activeObjects.get(i) instanceof enemy && p.getHitbox().overlaps(bad.getHitbox())){
+            GameObject obj = activeObjects.get(i);
+           
+            if(obj instanceof enemy && p.getHitbox().overlaps(obj.getHitbox())){
                 activeObjects.remove(i);
+                i--;
+                System.out.println("check has ate");
             }
         }
     }

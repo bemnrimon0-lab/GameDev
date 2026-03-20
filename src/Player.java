@@ -3,7 +3,7 @@ import com.badlogic.gdx.Input;
 
 public class Player extends GameObject{
     
-    private int speed = 200;
+    private int speed = 10;
     
     public Player(double x, double y){
 
@@ -19,11 +19,11 @@ public class Player extends GameObject{
         
         }
         if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            setY(getY() - (speed*deltaTime)) ;
+            setY(getY() + (speed*deltaTime)) ;
         
         }
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            setY(getY() + (speed*deltaTime)) ;
+            setY(getY() - (speed*deltaTime)) ;
         
         }
     }
