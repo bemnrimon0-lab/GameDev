@@ -27,6 +27,8 @@ public class MyGame extends ApplicationAdapter {
             enemy bad = new enemy(400,x);
             x += 60;
             activeObjects.add(bad); 
+            Hitbox H = new Hitbox(400,x);
+            activeObjects.add(H);
                }
     }
 
