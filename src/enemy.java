@@ -1,7 +1,7 @@
 public class enemy extends GameObject{
 
-    public enemy(double x, double y) {
-        super(x, y, 50, 50, "assets/fish_blue.png");
+    public enemy(double x, double y, int width, int height, String imagePath) {
+        super(x, y, width, height, imagePath);
         //TODO Auto-generated constructor stub
     }
     

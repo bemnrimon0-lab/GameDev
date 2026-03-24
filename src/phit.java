@@ -1,13 +1,13 @@
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
-public class Player extends GameObject{
+public class phit extends GameObject{
     
-    private int speed = 300;
+    private int speed = 10;
     
-    public Player(double x, double y){
+    public phit(double x, double y){
 
-        super((int) x, (int) y, 50, 50, "assets/ship.png");
+        super((int) x, (int) y, 50, 50, "assets/fish_red.png");
     }
     public void move(double deltaTime) {
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){

@@ -30,7 +30,7 @@ public class GameObject {
         return y ; 
     }
     public Rectangle getHitbox (){
-        return hitbox ; 
+        return this.hitbox ; 
     }
 
     // TODO 2: Write setter methods for x and y. 

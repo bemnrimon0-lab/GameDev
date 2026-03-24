@@ -4,10 +4,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
+
+
 public class MyGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private ArrayList<GameObject> activeObjects;
-    int x = 100;
+    private Player p;
     // enemy bad;
 
 
@@ -18,18 +20,24 @@ public class MyGame extends ApplicationAdapter {
         activeObjects = new ArrayList<GameObject>();
 
         // TODO 3: Instantiate your Player subclass and add it to activeObjects.
-        Player p = new Player(50,100);
+        p = new Player(50,100);
         activeObjects.add(p);
+        //player hitbix 
+        // phit f = new phit(50,100);
+        //     activeObjects.add(f);
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
 
+        int x = 100;
         for(int i = 0 ; i < 5 ; i ++){
-            enemy bad = new enemy(400,x);
-            x += 60;
+            enemy bad = new enemy(400,x, 50,50, "assets/fish_blue.png");
+            
             activeObjects.add(bad); 
-            Hitbox H = new Hitbox(400,x);
-            activeObjects.add(H);
-               }
+            //shows the hitboxes 
+            // Hitbox H = new Hitbox(400,x);
+            // activeObjects.add(H);
+            x += 60;
+        }
     }
 
     //render() is the game loop, called approx 60 times per second
@@ -48,7 +56,7 @@ public class MyGame extends ApplicationAdapter {
         // TODO 5: Write a standard or enhanced for-loop to iterate through activeObjects.
         // For each object, call its move() method.
         for(int i = 0 ; i < activeObjects.size() ; i++){
-            activeObjects.get(i).move(1.0);
+            activeObjects.get(i).move(deltaTime);
         }
         
         //Note: Anything drawn must be between .begin() and .end()
@@ -66,15 +74,12 @@ public class MyGame extends ApplicationAdapter {
         // See the cheat sheet for the overlap method!
         // NOTE: If you are removing items from an ArrayList, how must you structure 
         // your for-loop to avoid skipping elements?
-        Player p = new Player(50,100);
       
-        for(int i = 0 ; i < activeObjects.size() ; i++){
-            GameObject obj = activeObjects.get(i);
-           
-            if(obj instanceof enemy && p.getHitbox().overlaps(obj.getHitbox())){
+        for(int i = activeObjects.size() - 1; i >= 0; i--){
+            GameObject b = activeObjects.get(i);
+            if(b instanceof enemy && b.getHitbox().overlaps(p.getHitbox())){
                 activeObjects.remove(i);
-                i--;
-                System.out.println("check has ate");
+                
             }
         }
     }
